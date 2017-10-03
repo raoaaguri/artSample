@@ -1,0 +1,180 @@
+<html>
+	<head>
+		<title>Aartway Studio</title>
+		<meta charset="UTF-8">
+		<meta name="description" content="Best Art Studio">
+		
+		<link type="text/css" href="commonStyles.css" rel="stylesheet"/>
+		<link type="text/css" href="slideshow.css" rel="stylesheet"/>
+
+		<script src="jquery-3.2.1.min.js"></script>
+
+	</head>
+	<body>
+		<!-- Main Conatiner-->
+		<div class="mainContainer">		
+		<!-- Page Header Start-->
+			<div class="headerContainer">
+				<div class="logo">
+					<a href="#" alt="homepage"> <img src="./images/logo.png" alt="Aartway Studio Logo"/></a>
+				</div>
+				<div class="subLinks"> 
+					<ul>
+						<li>
+							<a href="homePage.html" class="active" alt="homepage"> Home </a>
+						</li>
+						<li>
+							<a href="gallaryPage.html" alt="gallary"> Gallary </a>
+						</li>
+						<li>
+							<a href="#3" alt="about"> About Artist </a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		<!-- Page Header End-->
+		
+		<!-- Page Content Start-->
+			<div class="mainContainer">
+				<div id="slideShowContainer" class="slideShowContainer">
+					<a id="prev" class="prev" alt="previous"></a>
+					<ul>
+						<li class="imgContainer"> 
+							<!--Image display section-->
+							<img href="#" class="lazyload" dataItem-URL="./images/banner/painting1.png" src="" alt="Image1"/>
+						</li>
+						<li class="imgContainer"> 
+							<!--Image display section-->
+							<img class="lazyload" dataItem-URL="./images/banner/painting1.png" src="" alt="Image2"/>
+						</li>
+						<li class="imgContainer"> 
+							<!--Image display section-->
+							<img class="lazyload" dataItem-URL="./images/banner/painting1.png" src="" alt="Image3"/>
+						</li>
+						<li class="imgContainer"> 
+							<!--Image display section-->
+							<img class="lazyload" dataItem-URL="./images/banner/painting1.png" src="" alt="Image4"/>
+						</li>
+					</ul>
+					<a id="nxt" class="nxt" alt="next"></a>
+				</div>
+				<div class="pageContent">
+					<h1>Aartway Studio</h1>
+					<p>
+						Aartway Studio is one place where you can learn and know about painting and also buy painting. 
+						Aartway Studio is one place where you can learn and know about painting and also buy painting.
+						Aartway Studio is one place where you can learn and know about painting and also buy painting.
+						Aartway Studio is one place where you can learn and know about painting and also buy painting.
+					</p>
+				</div>
+			</div>
+		<!-- Page Content End-->
+		
+		<!-- Page Footer Start-->
+			<div class="footerContainer">
+				<ul>
+					<li>
+						&nbsp;
+					</li>
+					<li>
+						<a href="#">Home</a>
+					</li>
+					<li>
+						<a href="#">Gallary</a>						
+					</li>
+					<li>
+						<a href="#">AboutUs</a>						
+					</li>
+				</ul>
+				<ul>
+					<li>
+						&nbsp;
+					</li>
+					<li>
+						<a href="#">contact Information</a>
+					</li>
+					<li>
+						<a href="#">Feedback</a>						
+					</li>
+					<li>
+						<a href="#">AboutUs</a>						
+					</li>
+				</ul>
+			</div>
+		<!-- Page Footer End-->		
+		</div>
+		<script>
+			( function(){
+				var slideShow = $(".slideShowContainer"),
+					imgContainer = $(".imgContainer"),
+					lazyloadImage = $(".lazyload");
+					prev = $(".prev"),
+					nxt = $(".nxt"),
+					prevIndex = 0,
+					currIndex = 0;
+					
+					lazyloadImage.each(function() {
+						this.src = $(this).attr("dataItem-URL");
+						//console.log(s);
+					});
+					
+					// applying  z-index to first image
+					imgContainer[currIndex].style.zIndex = 2;
+					
+					/*for( var i = 0; i < imgContainer.legth; i++ ) {
+						//imgContainer[0].style.zIndex = 
+					}*/
+					
+					prev.on('click', function(){
+						prevIndex = currIndex;						
+						if(currIndex == 0) {
+							currIndex = imgContainer.length-1;
+						} else {
+							currIndex--;
+						}
+						imgContainer[prevIndex].style.zIndex = 0;
+						imgContainer[currIndex].style.zIndex = 2;
+					});
+					
+					/*prev.click = function() {
+						prevIndex = currIndex;						
+						if(currIndex == 0) {
+							currIndex = imgContainer.length;
+						} else {
+							currIndex--;
+						}
+						imgContainer[prevIndex].style.zIndex = 0;
+						imgContainer[currIndex].style.zIndex = 2;
+					}
+					
+					nxt.click = function() {
+					debugger;
+						prevIndex = currIndex;
+						if(currIndex == imgContainer.length) {
+							currIndex = 0;
+						} else {
+							currIndex++;
+						}
+						imgContainer[prevIndex].style.zIndex = 0;
+						imgContainer[currIndex].style.zIndex = 2;
+					}*/
+					
+					nxt.on('click', function(){
+						prevIndex = currIndex;
+						if(currIndex == (imgContainer.length-1)) {
+							currIndex = 0;
+						} else {
+							currIndex++;
+						}
+						console.log("curr" + currIndex);
+						console.log("pre" + prevIndex);
+						imgContainer[prevIndex].style.zIndex = 0;
+						imgContainer[currIndex].style.zIndex = 2;
+					});
+					
+				//debugger;
+			})(); 
+		</script>
+		
+	</body>
+</html>
